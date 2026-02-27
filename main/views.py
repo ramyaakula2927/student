@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from main.models import Student
 
 def home(request):
     return render(request, 'main/home.html')
@@ -10,12 +11,9 @@ def colleges(request):
     return render(request, 'colleges.html', {'colleges': collegelist})
 
 
-studentdata = [
-    {'rno': 1201, 'name': 'Harinya', 'age': 21, 'branch': 'CSE'},
-    {'rno': 1202, 'name': 'Madhu', 'age': 17, 'branch': 'ECE'},
-    {'rno': 1203, 'name': 'Hamsa', 'age': 21, 'branch': 'MECH'},
-]
 
 
-def student(request):   # function name should be lowercase
+
+def student(request):  
+    studentdata=Student.objects.all()
     return render(request, 'main/students.html', {'students': studentdata})
